@@ -19,9 +19,9 @@ export class FormsComponent implements User   {
     this.email = login.value.email;
     this.password = login.value.password;
 
-    
 
-    console.log(this.name, this.email, this.password)
+
+    console.log(login)
   }
 
 

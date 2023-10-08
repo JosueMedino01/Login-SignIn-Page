@@ -11,7 +11,7 @@
     <div class="form-group">
       <label for="email">Email</label>
       <input #email="ngModel" required  type="email" name="email" class="form-group" ngModel>
-      <div *ngIf="email.touched && email.invalid ">Please enter a valid email address.</div>
+      <div *ngIf="email.touched && email.errors?.['email'] ">Please enter a valid email address.</div>
 
     </div>
     <div class="form-group">
