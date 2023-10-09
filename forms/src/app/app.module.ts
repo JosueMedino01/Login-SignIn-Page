@@ -17,8 +17,11 @@ import { SingUpComponent } from './sing-up/sing-up.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
-
 const MATERIAL_ANGULAR = [MatInputModule,MatFormFieldModule,MatButtonModule,MatIconModule,MatCheckboxModule]
+
+//Requisições
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ const MATERIAL_ANGULAR = [MatInputModule,MatFormFieldModule,MatButtonModule,MatI
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ...MATERIAL_ANGULAR
+    ...MATERIAL_ANGULAR,
+    HttpClientModule
 
 
 
