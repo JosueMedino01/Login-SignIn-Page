@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.services';
 
@@ -21,9 +21,9 @@ export class SingUpComponent implements OnInit {
 
   ngOnInit(){
     this.reactiveForm = new FormGroup({
-      username: new FormControl('Josue Medino', Validators.required),
-      email: new FormControl('carlos.pereira@example.com', [Validators.email, Validators.required]),
-      password: new FormControl('Ajo123!@#', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/)]),
+      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.email, Validators.required]),
+      password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/)]),
     });
   }
 
@@ -38,7 +38,7 @@ export class SingUpComponent implements OnInit {
     this.userService.addUser(this.email?.value, newUser).subscribe((bool) => {
 
       const snackConfig:MatSnackBarConfig = {
-        duration: 100000,
+        duration: 3000,
         verticalPosition: 'bottom',
         horizontalPosition: 'right',
 
@@ -46,15 +46,16 @@ export class SingUpComponent implements OnInit {
 
 
       if (bool) {
-        this.snackBar.open('The email is already in use!','', snackConfig)
+        this.snackBar.open('The email is already in use!','', snackConfig);
 
       } else {
-        this.snackBar.open('Account created with success!','',snackConfig)
+        this.snackBar.open('Account created with success!','',snackConfig);
+        this.reactiveForm.reset(undefined, {emitEvent: false});
+        this.reactiveForm.markAsPristine();
+        this.reactiveForm.markAsUntouched();
+
       }
     });
-
-
-    console.log('Name: ',this.reactiveForm)
 
   }
 
@@ -70,6 +71,9 @@ export class SingUpComponent implements OnInit {
 
   requisitarService(){
   }
+
+
+
 
 
 }
