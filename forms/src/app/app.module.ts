@@ -16,11 +16,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-const MATERIAL_ANGULAR = [MatInputModule,MatFormFieldModule,MatButtonModule,MatIconModule,MatCheckboxModule]
+
+const MATERIAL_ANGULAR = [MatInputModule,MatFormFieldModule,MatButtonModule,MatIconModule,MatCheckboxModule,MatSnackBarModule]
 
 //Requisições
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -29,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsComponent,
     ReactiveFormsComponent,
     SingUpComponent,
+
 
   ],
   imports: [

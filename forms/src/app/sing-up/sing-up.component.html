@@ -41,11 +41,11 @@
       <div *ngIf="password?.errors?.['pattern'] ">*Password must contain at least 8 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character.</div>
     </div>
 
-    <button class="container-form-btn" style="color: #fff;" mat-button  type="submit" (click)="requisitarService()">Sign in</button>
+    <button class="container-form-btn" style="color: #fff;" mat-button  type="submit" >Sign in</button>
     <a [routerLink]="['/login']" class="container-form-link">Enter with your existing account</a>
   </form>
 
-
+ 
 
 
 </div>
