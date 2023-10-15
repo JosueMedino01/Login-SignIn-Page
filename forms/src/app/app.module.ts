@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsComponent } from './forms/forms.component';
+
 
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,13 +25,16 @@ const MATERIAL_ANGULAR = [MatInputModule,MatFormFieldModule,MatButtonModule,MatI
 import { HttpClientModule } from '@angular/common/http';
 
 
+import { NotifierComponent } from './notifier/notifier.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormsComponent,
     ReactiveFormsComponent,
     SingUpComponent,
+    NotifierComponent,
 
 
   ],

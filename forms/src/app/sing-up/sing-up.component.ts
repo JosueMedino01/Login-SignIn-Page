@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.services';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { config } from 'rxjs';
+import { NotifierService } from '../notifier.service';
 
 
 
@@ -37,19 +39,30 @@ export class SingUpComponent implements OnInit {
 
     this.userService.addUser(this.email?.value, newUser).subscribe((bool) => {
 
+      /*
       const snackConfig:MatSnackBarConfig = {
         duration: 3000,
         verticalPosition: 'bottom',
         horizontalPosition: 'right',
 
-      }
+           const snackConfig = new MatSnackBarConfig();
+          snackConfig.panelClass = bool ? ['snack-success'] : ['snack-error'];
+          snackConfig.duration = 3000;
+          snackConfig.verticalPosition = 'bottom';
+          snackConfig.horizontalPosition = 'right';
+      */
+
 
 
       if (bool) {
-        this.snackBar.open('The email is already in use!','', snackConfig);
+        //this.snackBar.open('The email is already in use!','', snackConfig);
+        this.notifierService.showNotification("The email is already in use!", bool);
+
 
       } else {
-        this.snackBar.open('Account created with success!','',snackConfig);
+        //this.snackBar.open('Account created with success!','',snackConfig);
+
+        this.notifierService.showNotification("Account created with success!", bool)
         this.reactiveForm.reset(undefined, {emitEvent: false});
         this.reactiveForm.markAsPristine();
         this.reactiveForm.markAsUntouched();
@@ -59,7 +72,7 @@ export class SingUpComponent implements OnInit {
 
   }
 
-  constructor(private userService: UserService, private snackBar:MatSnackBar){
+  constructor(private userService: UserService, private snackBar:MatSnackBar, private notifierService:NotifierService){
 
   }
 
