@@ -3,52 +3,52 @@
     {
       "name": "João da Silva",
       "email": "joao.silva@example.com",
-      "password": "P@ssw0r"
+      "password": "P@ssw0re"
     },
     {
       "name": "Maria Santos",
       "email": "maria.santos@example.com",
-      "password": "Secr3t@1"
+      "password": "Secr3t@1e"
     },
     {
       "name": "Carlos Pereira",
       "email": "carlos.pereira@example.com",
-      "password": "P@ssw0r"
+      "password": "P@ssw0re"
     },
     {
       "name": "Ana Oliveira",
       "email": "ana.oliveira@example.com",
-      "password": "Secr3t@1"
+      "password": "Secr3t@1e"
     },
     {
       "name": "Pedro Rodrigues",
       "email": "pedro.rodrigues@example.com",
-      "password": "P@ssw0r"
+      "password": "P@ssw0re"
     },
     {
       "name": "Lúcia Fernandes",
       "email": "lucia.fernandes@example.com",
-      "password": "Secr3t@1"
+      "password": "Secr3t@1e"
     },
     {
       "name": "Mário Costa",
       "email": "mario.costa@example.com",
-      "password": "P@ssw0r"
+      "password": "P@ssw0re"
     },
     {
       "name": "Sofia Almeida",
       "email": "sofia.almeida@example.com",
-      "password": "Secr3t@1"
+      "password": "Secr3t@1e"
     },
     {
       "name": "Rui Sousa",
       "email": "rui.sousa@example.com",
-      "password": "P@ssw0r"
+      "password": "P@ssw0re"
     },
     {
       "name": "Catarina Lima",
       "email": "catarina.lima@example.com",
-      "password": "Secr3t@1"
+      "password": "Secr3t@1e"
     }
   ]
 }

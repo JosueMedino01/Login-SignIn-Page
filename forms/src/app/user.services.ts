@@ -34,5 +34,16 @@ export class UserService {
     );
   }
 
+  shareUser(email: any): Observable<any> {
+    return this.httpClient.get<any[]>(this.url).pipe(
+      map((data:any) => {
+        this.response = data;
+        return this.response.find((x: any) => x['email'] === email);
+
+        })
+      );
+    }
+
+
 }
 

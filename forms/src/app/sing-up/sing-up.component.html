@@ -4,7 +4,7 @@
   </figure>
 
   <form class="container-form" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-    <h1  class="container-form-title">Sign In</h1>
+    <h1  class="container-form-title">{{title | titlecase}}</h1>
 
 
     <mat-form-field  class="container-form-input">
@@ -31,14 +31,14 @@
     <mat-form-field class="container-form-input">
       <mat-label for="password">Enter your password</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  #passwordField>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
 
     <div *ngIf="password?.invalid && (password?.touched)" class="error">
       <div *ngIf="password?.errors?.['required'] ">*Password is required</div>
-      <div *ngIf="password?.errors?.['pattern'] ">*Password must contain at least 8 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character.</div>
+      <div *ngIf="password?.errors?.['pattern'] ">*Example valid password: Abc123!@#</div>
     </div>
 
     <button class="container-form-btn" style="color: #fff;" mat-button  type="submit" >Sign in</button>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../user.services';
+import { NotifierService } from '../notifier.service';
 
 
 
@@ -16,16 +18,36 @@ export class ReactiveFormsComponent implements OnInit {
 
   ngOnInit(){
     this.reactiveForm = new FormGroup({
-      email: new FormControl('carlosmedino13@gmail.io', [Validators.email, Validators.required]),
-      password: new FormControl('Ajo123!@#', [Validators.required, Validators.minLength(8)])
+      email: new FormControl(null, [Validators.email, Validators.required]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     })
   }
 
   onSubmit(){
+    if(this.reactiveForm.status === "INVALID"){
+      this.notifierService.showNotification("Please fill out all the information", true);
+      return;
+    }
+
+    this.userService.shareUser(this.email?.value).subscribe((x) => {
 
 
-    console.log(this.reactiveForm);
+      if(x === undefined){
+        this.notifierService.showNotification("Email not found!", true);
+        return;
+      }
+
+      if(x.password === this.password?.value){
+        this.notifierService.showNotification("Connected!", false);
+      } else {
+        this.notifierService.showNotification("Incorrect Password!", true);
+      }
+    })
+
+
   }
+
+  constructor(private userService:UserService, private notifierService:NotifierService){}
 
   get email() { return this.reactiveForm.get('email'); }
   get password() { return this.reactiveForm.get('password'); }
