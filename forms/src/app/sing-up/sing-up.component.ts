@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.services';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { config } from 'rxjs';
+import { EMPTY, Observable, Subject, catchError, config } from 'rxjs';
 import { NotifierService } from '../notifier.service';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ export class SingUpComponent implements OnInit {
   usuario!: any[];
   durationInSeconds = 5;
   title = 'sign in'
+
 
 
   ngOnInit(){
@@ -43,47 +44,51 @@ export class SingUpComponent implements OnInit {
       password: this.password?.value
     }
 
+    this.adicionarUsuario(this.email?.value, newUser)
+
+  }
+
+  constructor(private userService: UserService, private snackBar:MatSnackBar, private notifierService:NotifierService, private router:Router){}
 
 
-    this.userService.addUser(this.email?.value, newUser).subscribe((bool) => {
 
-      if (bool) {
-        this.notifierService.showNotification("The email is already in use!", bool);
+  adicionarUsuario(email:string, dataNewUser:any){
+    //Faz referência com o Observable e se Increve
+    this.userService.findUser(email)
+
+    //Tratamento do erro
+    .pipe(
+      catchError(error => {
+        this.notifierService.showNotification("Error with request HTTP!", true)
+        return EMPTY;
+      })
+    )
+
+    //Inscreve-se no Observable
+    .subscribe(userData => {
+
+      if(userData === undefined){
+        //Caso não exista user, add o novo usuario
+        this.userService.adicionarUsuario(dataNewUser)
+
+        this.notifierService.showNotification("Account created with success!", false)
+        this.reactiveForm.reset(undefined, {emitEvent: false});
 
       } else {
-        //this.snackBar.open('Account created with success!','',snackConfig);
-
-        this.notifierService.showNotification("Account created with success!", bool)
-        this.reactiveForm.reset(undefined, {emitEvent: false});
-        this.reactiveForm.markAsPristine();
-        this.reactiveForm.markAsUntouched();
-        this.redirecionarLogin();
-
+        //Caso já exista usuário, mensagem de erro
+        this.notifierService.showNotification("The email is already in use!", true);
       }
-    });
-
-
-
+    })
   }
 
-  constructor(private userService: UserService, private snackBar:MatSnackBar, private notifierService:NotifierService, private router:Router){
-
-  }
-
-  get username() { return this.reactiveForm.get('username'); }
-  get email() { return this.reactiveForm.get('email'); }
-  get password() { return this.reactiveForm.get('password'); }
-
-
-
-  requisitarService(){
-  }
 
 
   redirecionarLogin(){
     this.router.navigate(['login'])
   }
 
-
+  get username() { return this.reactiveForm.get('username'); }
+  get email() { return this.reactiveForm.get('email'); }
+  get password() { return this.reactiveForm.get('password'); }
 }
 

@@ -29,7 +29,8 @@ export class ReactiveFormsComponent implements OnInit {
       return;
     }
 
-    this.userService.shareUser(this.email?.value).subscribe((x) => {
+   /*
+     this.userService.shareUser(this.email?.value).subscribe((x) => {
 
 
       if(x === undefined){
@@ -43,6 +44,8 @@ export class ReactiveFormsComponent implements OnInit {
         this.notifierService.showNotification("Incorrect Password!", true);
       }
     })
+
+   */
 
 
   }
