@@ -1,54 +1,34 @@
 {
   "usuarios": [
     {
-      "name": "João da Silva",
-      "email": "joao.silva@example.com",
-      "password": "P@ssw0re"
+      "id": "765f8bf4-4ba8-424c-94f0-e08121e7e608",
+      "name": "Josue Medino",
+      "email": "josuemedino5@gmail.com",
+      "password": "ExamploSenha1@"
     },
     {
-      "name": "Maria Santos",
-      "email": "maria.santos@example.com",
-      "password": "Secr3t@1e"
-    },
-    {
+      "id": "c5b899ff-e49a-435c-9bbd-15acc5051e21",
       "name": "Carlos Pereira",
       "email": "carlos.pereira@example.com",
-      "password": "P@ssw0re"
+      "password": "Ajo123!@#"
     },
     {
-      "name": "Ana Oliveira",
-      "email": "ana.oliveira@example.com",
-      "password": "Secr3t@1e"
+      "id": "1097aa1d-67b5-40b3-99b2-5b4b2323a962",
+      "name": "Josue",
+      "email": "Almir.pereira@example.com",
+      "password": "Ajo123!@#"
     },
     {
-      "name": "Pedro Rodrigues",
-      "email": "pedro.rodrigues@example.com",
-      "password": "P@ssw0re"
+      "id": "e6eb6d82-61df-4147-b6c1-d0186013b0a5",
+      "name": "Josue",
+      "email": "JoseRaulCapablanca@example.com",
+      "password": "Ajo123!@#"
     },
     {
-      "name": "Lúcia Fernandes",
-      "email": "lucia.fernandes@example.com",
-      "password": "Secr3t@1e"
-    },
-    {
-      "name": "Mário Costa",
-      "email": "mario.costa@example.com",
-      "password": "P@ssw0re"
-    },
-    {
-      "name": "Sofia Almeida",
-      "email": "sofia.almeida@example.com",
-      "password": "Secr3t@1e"
-    },
-    {
-      "name": "Rui Sousa",
-      "email": "rui.sousa@example.com",
-      "password": "P@ssw0re"
-    },
-    {
-      "name": "Catarina Lima",
-      "email": "catarina.lima@example.com",
-      "password": "Secr3t@1e"
+      "id": "ce35baf7-004d-4f20-8549-188c08e9fa6f",
+      "name": "Josue",
+      "email": "example@gmail.com",
+      "password": "example123!@#A"
     }
   ]
 }

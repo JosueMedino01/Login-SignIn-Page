@@ -1,6 +1,7 @@
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from './User.interface';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class UserService {
 
 //Verifica a existencia do email no servidor
  findUser(email:string){
-  return this.httpClient.get<any>(this.url)
+  return this.httpClient.get<User[]>(this.url)
   .pipe(
     map(data =>  (data.find((x: any) => x['email'] === email)))
   )
@@ -28,7 +29,7 @@ export class UserService {
 
 
  adicionarUsuario(dadosUser:any){
-
+  return this.httpClient.post(this.url, dadosUser).pipe(take(1));
  }
 
 

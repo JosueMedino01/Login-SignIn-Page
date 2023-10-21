@@ -7,7 +7,7 @@ import { EMPTY, Observable, Subject, catchError, config } from 'rxjs';
 import { NotifierService } from '../notifier.service';
 import { Router } from '@angular/router';
 
-
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-sing-up',
@@ -35,10 +35,12 @@ export class SingUpComponent implements OnInit {
   onSubmit():void{
 
     if(this.reactiveForm.status == "INVALID"){
+      this.notifierService.showNotification("Please Review. Form Invalid", true);
       return;
     }
 
     const newUser = {
+      id: uuidv4(),
       name: this.username?.value,
       email: this.email?.value,
       password: this.password?.value
@@ -69,10 +71,16 @@ export class SingUpComponent implements OnInit {
 
       if(userData === undefined){
         //Caso não exista user, add o novo usuario
-        this.userService.adicionarUsuario(dataNewUser)
+        this.userService.adicionarUsuario(dataNewUser).subscribe(
+          success => console.log('Sucesso'),
+          error => console.error(error),
+          () => console.log("Request Completo")
+        )
 
         this.notifierService.showNotification("Account created with success!", false)
         this.reactiveForm.reset(undefined, {emitEvent: false});
+
+        this.redirecionarLogin();
 
       } else {
         //Caso já exista usuário, mensagem de erro

@@ -29,25 +29,21 @@ export class ReactiveFormsComponent implements OnInit {
       return;
     }
 
-   /*
-     this.userService.shareUser(this.email?.value).subscribe((x) => {
-
-
-      if(x === undefined){
+    this.userService.findUser(this.email?.value)
+    .subscribe(userData => {
+      //Caso o email solicitado nao seja encontrado
+      if(userData === undefined){
         this.notifierService.showNotification("Email not found!", true);
         return;
       }
 
-      if(x.password === this.password?.value){
+      if(userData.password === this.password?.value){
         this.notifierService.showNotification("Connected!", false);
       } else {
         this.notifierService.showNotification("Incorrect Password!", true);
       }
+
     })
-
-   */
-
-
   }
 
   constructor(private userService:UserService, private notifierService:NotifierService){}
