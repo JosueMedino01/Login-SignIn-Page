@@ -5,7 +5,7 @@ import { SingUpComponent } from './sing-up/sing-up.component';
 
 const routes: Routes = [
 
-  {path: 'signin', component: SingUpComponent},
+  {path: 'signup', component: SingUpComponent},
   {path: 'login', component: ReactiveFormsComponent},
   {path: '**', component: SingUpComponent}
 ];

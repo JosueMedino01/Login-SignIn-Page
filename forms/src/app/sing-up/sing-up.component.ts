@@ -20,7 +20,7 @@ export class SingUpComponent implements OnInit {
   hide = true
   usuario!: any[];
   durationInSeconds = 5;
-  title = 'sign in'
+  title = 'sign up'
 
 
 

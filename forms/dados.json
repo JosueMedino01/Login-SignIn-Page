@@ -29,6 +29,12 @@
       "name": "Josue",
       "email": "example@gmail.com",
       "password": "example123!@#A"
+    },
+    {
+      "id": "28cc553d-834d-4c9e-8643-c7216fa30da3",
+      "name": "Josue",
+      "email": "pereira@example.com",
+      "password": "Ajo123!@#"
     }
   ]
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.services';
 import { NotifierService } from '../notifier.service';
+import { EMPTY, catchError } from 'rxjs';
 
 
 
@@ -30,6 +31,13 @@ export class ReactiveFormsComponent implements OnInit {
     }
 
     this.userService.findUser(this.email?.value)
+    .pipe(
+      catchError(erro => {
+        this.notifierService.showNotification("Error with request HTTP!", true);
+        return EMPTY;
+      })
+    )
+
     .subscribe(userData => {
       //Caso o email solicitado nao seja encontrado
       if(userData === undefined){
