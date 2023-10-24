@@ -21,7 +21,6 @@
 
 .container-image{
   width: 55%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +28,7 @@
 
 .container-image img{
  height: 100%;
+ width: 100%;
 
 }
 
@@ -47,11 +47,13 @@
 
 .container-form-input{
   width: 60%;
+  min-width: 360px;
 }
 .container-form-btn{
   width: 60%;
   background-color: #ec447d;
   font-weight: 600;
+  min-width: 360px;
 
 
 }
@@ -75,4 +77,15 @@
   margin-bottom: 0.4em;
   text-align: left;
   width: 60%
+}
+
+
+@media (max-width: 768px) {
+  .container-image{
+    display: none;
+  }
+
+  .container-form{
+    width: 100%;
+  }
 }
